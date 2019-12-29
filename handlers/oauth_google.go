@@ -8,11 +8,17 @@ import (
 	"io/ioutil"
 	"context"
 	"log"
+	"encoding/json"
 	"encoding/base64"
 	"crypto/rand"
 	"os"
 	"time"
 )
+// User Object Returned From Google
+type GoogleUser struct {
+	Id string `json: "id"`
+	Email string `json: "email"`
+}
 
 // Scopes: OAuth 2.0 scopes provide a way to limit the amount of access that is granted to an access token.
 var googleOauthConfig = &oauth2.Config{
@@ -54,11 +60,18 @@ func oauthGoogleCallback(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/", http.StatusTemporaryRedirect)
 		return
 	}
-
+	var user GoogleUser
+	// contents, err := ioutil.ReadAll(response.Body)
+	json.Unmarshal(data,&user)
 	// GetOrCreate User in your db.
 	// Redirect or response with a token.
 	// More code .....
-	fmt.Fprintf(w, "UserInfo: %s\n", data)
+	// Finally, send a response to redirect the user to the "welcome" page
+	// with the access token
+	w.Header().Set("Location", "/welcome.html?access_token=" + user.Email)
+	w.WriteHeader(http.StatusFound)
+	// fmt.Fprintf(w, "UserInfo: %s\n", data)
+	// http.Redirect(w, r, "/", http.StatusTemporaryRedirect)
 }
 
 func generateStateOauthCookie(w http.ResponseWriter) string {
