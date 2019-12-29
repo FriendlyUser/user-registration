@@ -37,22 +37,32 @@
                             <div class="text-center text-muted mb-4">
                                 <small>Or sign in with credentials</small>
                             </div>
-                            <form role="form">
-                                <base-input alternative
-                                            class="mb-3"
-                                            placeholder="Email"
-                                            addon-left-icon="ni ni-email-83">
+                            <form id="loginForm" role="form">
+                                <base-input 
+                                    alternative
+                                    class="mb-3"
+                                    placeholder="Email"
+                                    addon-left-icon="ni ni-email-83"
+                                    v-model="email"
+                                    name="email"
+                                    v-bind:value="email"
+                                >
                                 </base-input>
-                                <base-input alternative
-                                            type="password"
-                                            placeholder="Password"
-                                            addon-left-icon="ni ni-lock-circle-open">
+                                <base-input 
+                                    alternative
+                                    type="password"
+                                    placeholder="Password"
+                                    addon-left-icon="ni ni-lock-circle-open"
+                                    v-model="password"
+                                    name="password"
+                                     v-bind:value="password"
+                                >
                                 </base-input>
                                 <base-checkbox>
                                     Remember me
                                 </base-checkbox>
                                 <div class="text-center">
-                                    <base-button type="primary" class="my-4">Sign In</base-button>
+                                    <base-button type="primary" class="my-4" v-on:click="loginHandler">Sign In</base-button>
                                 </div>
                             </form>
                         </template>
@@ -77,12 +87,33 @@
 <script>
 // TODO create different callbacks based on environment variables
 export default {
+    data() {
+        return {
+            email: '',
+            password: ''
+        }
+    },
     methods: {
         googleOAuth() {
             window.location.href = "http://localhost:8000/auth/google/login"
+        },
+        loginHandler() {
+            fetch("http://localhost:8000/auth/login",  {
+                method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                body: JSON.stringify({email: this.email, password: this.password})
+            })
+            .then(response => {
+                return response.text()
+            })
+            .then(myJson => {
+                console.log(myJson)
+            })
+            .catch(error => {
+                console.log(error)
+            })
         }
     }
-};
+}
 </script>
 <style>
 </style>
