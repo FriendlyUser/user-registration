@@ -68,7 +68,7 @@ func oauthGoogleCallback(w http.ResponseWriter, r *http.Request) {
 	// More code .....
 	// Finally, send a response to redirect the user to the "welcome" page
 	// with the access token
-	w.Header().Set("Location", "/welcome.html?access_token=" + user.Email)
+	w.Header().Set("Location", "http://localhost:8080/#/register/?access_token=" + user.Email)
 	w.WriteHeader(http.StatusFound)
 	// fmt.Fprintf(w, "UserInfo: %s\n", data)
 	// http.Redirect(w, r, "/", http.StatusTemporaryRedirect)
