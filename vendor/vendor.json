@@ -34,6 +34,12 @@
 			"revisionTime": "2019-11-08T21:16:37Z"
 		},
 		{
+			"checksumSHA1": "HLcVGpscFDXM+Wkq7QBoLRIZ37U=",
+			"path": "golang.org/x/oauth2",
+			"revision": "858c2ad4c8b6c5d10852cb89079f6ca1c7309787",
+			"revisionTime": "2018-06-28T22:10:32Z"
+		},
+		{
 			"checksumSHA1": "M/wIld2NO0r0VA16gCntGLaD/SY=",
 			"path": "golang.org/x/oauth2/internal",
 			"revision": "858c2ad4c8b6c5d10852cb89079f6ca1c7309787",
