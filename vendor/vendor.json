@@ -4,7 +4,7 @@
 	"package": [],
 	"rootPath": "github.com/FriendlyUser/user-registration",
   "heroku": {
-    "install" : [ "." ],
+    "install" : [ "./..." ],
     "goVersion": "go1.13"
   }
 }
