@@ -9,6 +9,7 @@ install:
 script:
   - npm run build
   - rm -rf node_modules
+  - cd ../
 
 deploy:
   provider: heroku
