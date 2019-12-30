@@ -1,5 +1,6 @@
-Simple Google OAuth example
+## Simple Google OAuth example
 
+Deployed to heroku
 
 To set env variables one can use
 
