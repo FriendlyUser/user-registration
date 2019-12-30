@@ -64,7 +64,6 @@
                                 >
                                 </base-input>
                                 <div class="text-muted font-italic">
-                                    <!-- Figure out how to measure password strength -->
                                     <small>password strength:
                                         <span class="text-success font-weight-700">strong</span>
                                     </small>
@@ -108,9 +107,6 @@ export default {
             })
             .then(myJson => {
                 console.log(myJson)
-                // save token in local state
-                 window.location.href = "http://localhost:8080/#/landing"
-                // move to a different page, the profile page
             })
             .catch(error => {
                 console.log(error)

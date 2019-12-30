@@ -1,0 +1,14 @@
+dist: trusty
+
+install:
+  - go get ./...
+  - cd front-end && npm install
+script:
+  - npm run build
+  - rm -rf node_modules
+
+deploy:
+  provider: heroku
+  skip_cleanup: true
+  api_key:
+    secure: $HEROKU_API_KEY

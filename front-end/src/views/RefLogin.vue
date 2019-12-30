@@ -27,7 +27,7 @@
                                     Github
                                 </base-button>
 
-                                <base-button type="neutral">
+                                <base-button type="neutral" v-on:click="googleOAuth">
                                     <img slot="icon" src="img/icons/common/google.svg">
                                     Google
                                 </base-button>
@@ -35,14 +35,9 @@
                         </template>
                         <template>
                             <div class="text-center text-muted mb-4">
-                                <small>Or sign up with credentials</small>
+                                <small>Or sign in with credentials</small>
                             </div>
-                            <form role="form">
-                                <base-input alternative
-                                            class="mb-3"
-                                            placeholder="Name"
-                                            addon-left-icon="ni ni-hat-3">
-                                </base-input>
+                            <form id="loginForm" role="form">
                                 <base-input 
                                     alternative
                                     class="mb-3"
@@ -63,29 +58,34 @@
                                     v-bind:value="password"
                                 >
                                 </base-input>
-                                <div class="text-muted font-italic">
-                                    <!-- Figure out how to measure password strength -->
-                                    <small>password strength:
-                                        <span class="text-success font-weight-700">strong</span>
-                                    </small>
-                                </div>
                                 <base-checkbox>
-                                    <span>I agree with the
-                                        <a href="#">Privacy Policy</a>
-                                    </span>
+                                    Remember me
                                 </base-checkbox>
                                 <div class="text-center">
-                                    <base-button type="primary" class="my-4" v-on:click="registerHandler">Create account</base-button>
+                                    <base-button type="primary" class="my-4" v-on:click="loginHandler">Sign In</base-button>
                                 </div>
                             </form>
                         </template>
                     </card>
+                    <div class="row mt-3">
+                        <div class="col-6">
+                            <a href="#" class="text-light">
+                                <small>Forgot password?</small>
+                            </a>
+                        </div>
+                        <div class="col-6 text-right">
+                            <a href="#" class="text-light">
+                                <small>Create new account</small>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 </template>
-<script>    
+<script>
+// TODO create different callbacks based on environment variables
 export default {
     data() {
         return {
@@ -93,13 +93,12 @@ export default {
             password: ''
         }
     },
-    mounted() {
-        console.log(this.$route.query)
-        console.log(this.$route.query.access_token)
-    },
     methods: {
-        registerHandler() {
-            fetch("http://localhost:8000/auth/register",  {
+        googleOAuth() {
+            window.location.href = "http://localhost:8000/auth/google/login"
+        },
+        loginHandler() {
+            fetch("http://localhost:8000/auth/login",  {
                 method: 'POST', // *GET, POST, PUT, DELETE, etc.
                 body: JSON.stringify({email: this.email, password: this.password})
             })
@@ -108,16 +107,13 @@ export default {
             })
             .then(myJson => {
                 console.log(myJson)
-                // save token in local state
-                 window.location.href = "http://localhost:8080/#/landing"
-                // move to a different page, the profile page
             })
             .catch(error => {
                 console.log(error)
             })
         }
     }
-};
+}
 </script>
 <style>
 </style>
