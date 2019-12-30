@@ -4,7 +4,7 @@
 	"package": [],
 	"rootPath": "github.com/FriendlyUser/user-registration",
   "heroku": {
-    "install" : [ "./...", "github.com/dgrijalva/jwt-go" ],
+    "install" : [ "./...", "./util/...", "./handlers/..." ],
     "goVersion": "go1.13"
   }
 }
