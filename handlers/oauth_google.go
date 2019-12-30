@@ -62,10 +62,7 @@ func oauthGoogleCallback(w http.ResponseWriter, r *http.Request) {
 	}
 	var user GoogleUser
 	// contents, err := ioutil.ReadAll(response.Body)
-	json.Unmarshal(data,&user)
-	// GetOrCreate User in your db.
-	// Redirect or response with a token.
-	// More code .....
+	json.Unmarshal(data, &user)
 	// Finally, send a response to redirect the user to the "welcome" page
 	// with the access token
 	w.Header().Set("Location", "http://localhost:8080/#/register/?access_token=" + user.Email)

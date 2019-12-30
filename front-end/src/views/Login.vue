@@ -55,7 +55,7 @@
                                     addon-left-icon="ni ni-lock-circle-open"
                                     v-model="password"
                                     name="password"
-                                     v-bind:value="password"
+                                    v-bind:value="password"
                                 >
                                 </base-input>
                                 <base-checkbox>
@@ -103,7 +103,7 @@ export default {
                 body: JSON.stringify({email: this.email, password: this.password})
             })
             .then(response => {
-                return response.text()
+                return response.json()
             })
             .then(myJson => {
                 console.log(myJson)

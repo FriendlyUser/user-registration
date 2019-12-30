@@ -6,6 +6,8 @@ import (
 	_ "github.com/lib/pq"
 )
 
+// the database is free tier elephantsql, don't intend to ever upgrade
+// access if you want, limited to 20MB
 const (
   host     = "rajje.db.elephantsql.com"
   port     = 5432

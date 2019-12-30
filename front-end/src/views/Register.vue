@@ -43,15 +43,25 @@
                                             placeholder="Name"
                                             addon-left-icon="ni ni-hat-3">
                                 </base-input>
-                                <base-input alternative
-                                            class="mb-3"
-                                            placeholder="Email"
-                                            addon-left-icon="ni ni-email-83">
+                                <base-input 
+                                    alternative
+                                    class="mb-3"
+                                    placeholder="Email"
+                                    addon-left-icon="ni ni-email-83"
+                                    v-model="email"
+                                    name="email"
+                                    v-bind:value="email"
+                                >
                                 </base-input>
-                                <base-input alternative
-                                            type="password"
-                                            placeholder="Password"
-                                            addon-left-icon="ni ni-lock-circle-open">
+                                <base-input 
+                                    alternative
+                                    type="password"
+                                    placeholder="Password"
+                                    addon-left-icon="ni ni-lock-circle-open"
+                                    v-model="password"
+                                    name="password"
+                                    v-bind:value="password"
+                                >
                                 </base-input>
                                 <div class="text-muted font-italic">
                                     <small>password strength:
@@ -64,7 +74,7 @@
                                     </span>
                                 </base-checkbox>
                                 <div class="text-center">
-                                    <base-button type="primary" class="my-4">Create account</base-button>
+                                    <base-button type="primary" class="my-4" v-on:click="registerHandler">Create account</base-button>
                                 </div>
                             </form>
                         </template>
@@ -76,9 +86,32 @@
 </template>
 <script>    
 export default {
+    data() {
+        return {
+            email: '',
+            password: ''
+        }
+    },
     mounted() {
         console.log(this.$route.query)
         console.log(this.$route.query.access_token)
+    },
+    methods: {
+        registerHandler() {
+            fetch("http://localhost:8000/auth/register",  {
+                method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                body: JSON.stringify({email: this.email, password: this.password})
+            })
+            .then(response => {
+                return response.json()
+            })
+            .then(myJson => {
+                console.log(myJson)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        }
     }
 };
 </script>
