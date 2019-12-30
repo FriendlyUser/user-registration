@@ -3,4 +3,8 @@
 	"ignore": "test",
 	"package": [],
 	"rootPath": "github.com/FriendlyUser/user-registration"
+  "heroku": {
+    "install" : [ "./..." ],
+    "goVersion": "go1.13"
+  },
 }
