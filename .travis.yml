@@ -14,5 +14,6 @@ script:
 deploy:
   provider: heroku
   skip_cleanup: true
+  app: user-demo-go-vue
   api_key:
     secure: $HEROKU_API_KEY
