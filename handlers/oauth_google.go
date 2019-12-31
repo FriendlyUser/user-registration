@@ -22,7 +22,7 @@ type GoogleUser struct {
 
 // Scopes: OAuth 2.0 scopes provide a way to limit the amount of access that is granted to an access token.
 var googleOauthConfig = &oauth2.Config{
-	RedirectURL:  "http://localhost:8000/auth/google/callback",
+	RedirectURL:  os.Getenv("REDIRECT_URL") + "/auth/google/callback",
 	ClientID:     os.Getenv("GOOGLE_OAUTH_CLIENT_ID"),
 	ClientSecret: os.Getenv("GOOGLE_OAUTH_CLIENT_SECRET"),
 	Scopes:       []string{"https://www.googleapis.com/auth/userinfo.email"},
@@ -65,7 +65,7 @@ func oauthGoogleCallback(w http.ResponseWriter, r *http.Request) {
 	json.Unmarshal(data, &user)
 	// Finally, send a response to redirect the user to the "welcome" page
 	// with the access token
-	w.Header().Set("Location", "http://localhost:8080/#/register/?access_token=" + user.Email)
+	w.Header().Set("Location", "/#/register/?access_token=" + user.Email)
 	w.WriteHeader(http.StatusFound)
 	// fmt.Fprintf(w, "UserInfo: %s\n", data)
 	// http.Redirect(w, r, "/", http.StatusTemporaryRedirect)
