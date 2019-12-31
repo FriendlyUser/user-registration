@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"log"
-
+	"os"
 	"github.com/FriendlyUser/user-registration/handlers"
 	db "github.com/FriendlyUser/user-registration/db"
 	util "github.com/FriendlyUser/user-registration/util"
@@ -15,9 +15,10 @@ func main() {
 	util.GetEnv("GOOGLE_OAUTH_CLIENT_ID", "fail")
 	util.GetEnv("GOOGLE_OAUTH_CLIENT_SECRET", "fail")
 	util.GetEnv("JWT_SECRET", "fail")
+	os.Getenv("PORT")
 	// We create a simple server using http.Server and run.
 	server := &http.Server{
-		Addr: fmt.Sprintf(":8000"),
+		Addr: fmt.Sprintf(),
 		Handler: handlers.New(),
 	}
 
