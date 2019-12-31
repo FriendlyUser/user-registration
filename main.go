@@ -15,13 +15,9 @@ func main() {
 	util.GetEnv("GOOGLE_OAUTH_CLIENT_ID", "fail")
 	util.GetEnv("GOOGLE_OAUTH_CLIENT_SECRET", "fail")
 	util.GetEnv("JWT_SECRET", "fail")
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "8000"
-	}
 	// We create a simple server using http.Server and run.
 	server := &http.Server{
-		Addr: fmt.Sprintf(port),
+		Addr: fmt.Sprintf(":" + os.Getenv("PORT")),
 		Handler: handlers.New(),
 	}
 
