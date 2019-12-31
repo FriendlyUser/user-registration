@@ -18,6 +18,12 @@
 			"revision": ""
 		},
 		{
+			"checksumSHA1": "0cytTxS0qPVjtknc7OrfuNmxvBE=",
+			"path": "github.com/dgrijalva/jwt-go",
+			"revision": "5e25c22bd5d6de03265bbe5462dcd162f85046f6",
+			"revisionTime": "2019-06-20T18:01:02Z"
+		},
+		{
 			"checksumSHA1": "cMMG97ehMrVNuNbf7x5pGhuZMOI=",
 			"path": "github.com/golang/protobuf/proto",
 			"revision": "ed6926b37a637426117ccab59282c3839528a700",
@@ -26,6 +32,12 @@
 		{
 			"checksumSHA1": "GtamqiJoL7PGHsN454AoffBFMa8=",
 			"path": "golang.org/x/net/context",
+			"revision": "c0dbc17a35534bf2e581d7a942408dc936316da4",
+			"revisionTime": "2019-11-08T21:16:37Z"
+		},
+		{
+			"checksumSHA1": "aFpql3G+Nw8zkzfqLWQJNZC8pu0=",
+			"path": "golang.org/x/net/context/ctxhttp",
 			"revision": "c0dbc17a35534bf2e581d7a942408dc936316da4",
 			"revisionTime": "2019-11-08T21:16:37Z"
 		},
