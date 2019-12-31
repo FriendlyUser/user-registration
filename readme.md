@@ -9,6 +9,7 @@ SET GOOGLE_OAUTH_CLIENT_ID=<KEY GOES HERE>
 SET GOOGLE_OAUTH_CLIENT_SECRET=<KEY GOES HERE>
 ```
 
+Uses govendor to track dependencies
 ### User Registeration System
 
 System User Registeration System created using vue and golang
