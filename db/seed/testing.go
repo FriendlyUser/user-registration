@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 	_ "github.com/lib/pq"
+	util "github.com/FriendlyUser/user-registration/util"
 )
 
 // the database is free tier elephantsql, don't intend to ever upgrade
@@ -25,9 +26,17 @@ func main() {
 		panic(err)
 	}
 	defer db.Close()
-
-	_, err = db.Exec("create table users (username varchar(255) primary key, password varchar(255), description text, phone varchar(255), job_title varchar(255));")
+	username := "epic"
+	storedCreds := util.User{}
+	storedCreds.Email = username
+	result := db.QueryRow("select password from users where username=$1", username);
+	err = result.Scan(&storedCreds.Password)
 	if err != nil {
-		panic(err)
+		// if no rows in set create user
+		if err == sql.ErrNoRows {
+			fmt.Printf("Trying to load files")
+			fmt.Printf(err.Error())
+		}
 	}
+
 }

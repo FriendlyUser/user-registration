@@ -13,6 +13,8 @@ import (
 	"crypto/rand"
 	"os"
 	"time"
+	db "github.com/FriendlyUser/user-registration/db"
+	util "github.com/FriendlyUser/user-registration/util"
 )
 // User Object Returned From Google
 type GoogleUser struct {
@@ -63,9 +65,13 @@ func oauthGoogleCallback(w http.ResponseWriter, r *http.Request) {
 	var user GoogleUser
 	// contents, err := ioutil.ReadAll(response.Body)
 	json.Unmarshal(data, &user)
+	var dbUser util.User
+	dbUser, err = db.CreateOrGetUser(user.Email)
+	accessToken := util.CreateJWT(dbUser.Email)
+	// check if user exists in db if not create, sign jwt and return
 	// Finally, send a response to redirect the user to the "welcome" page
 	// with the access token
-	w.Header().Set("Location", "/#/register/?access_token=" + user.Email)
+	w.Header().Set("Location", "/#/register/?access_token=" + accessToken)
 	w.WriteHeader(http.StatusFound)
 	// fmt.Fprintf(w, "UserInfo: %s\n", data)
 	// http.Redirect(w, r, "/", http.StatusTemporaryRedirect)

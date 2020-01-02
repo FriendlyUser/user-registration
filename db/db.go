@@ -32,7 +32,7 @@ func InitDB() {
 
 // TODO HASH Password
 func CreateUser(username string, password string) error {
-	if _, err := db.Query("insert into users values ($1, $2)", username, password); err != nil {
+	if _, err := db.Query("insert into users (username, password) values ($1, $2)", username, password); err != nil {
 		// If there is any issue with inserting into the database, return a 500 error
 		return err
 	}
@@ -49,4 +49,21 @@ func GetUser(username string) (util.User, error) {
 		return storedCreds, err
 	}
 	return storedCreds, err
+}
+
+func CreateOrGetUser(username string) (util.User, error) {
+	var User util.User
+	User, err := GetUser(username)
+	if err != nil {
+		// if no rows in set create user
+		if err == sql.ErrNoRows {
+			// create new user without password?
+			if _, err := db.Query("insert into users (username) values ($1)", username); err != nil {
+				// If there is any issue with inserting into the database, return a 500 error
+				var emptyUser util.User
+				return emptyUser, err
+			}
+		}
+	}
+	return User, err
 }

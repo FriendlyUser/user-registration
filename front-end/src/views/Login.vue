@@ -41,6 +41,7 @@
                                 <base-input 
                                     alternative
                                     class="mb-3"
+                                    v-bind:class="emailInvalid"
                                     placeholder="Email"
                                     addon-left-icon="ni ni-email-83"
                                     v-model="email"
@@ -50,6 +51,7 @@
                                 </base-input>
                                 <base-input 
                                     alternative
+                                    v-bind:class="passInvalid"
                                     type="password"
                                     placeholder="Password"
                                     addon-left-icon="ni ni-lock-circle-open"
@@ -93,11 +95,31 @@ export default {
             password: ''
         }
     },
+    computed: {
+        emailInvalid: function () {
+            return {
+                // add email password strength checkig
+                "has-danger": this.email.length == 0,
+                "has-success": this.email.length > 0
+            }
+        },
+        passInvalid: function () {
+            return {
+                // add email password strength checkig
+                "has-danger": this.password.length == 0,
+                "has-success": this.password.length > 0
+            }
+        },
+        credValid: function() {
+            return this.email.length > 0 && this.password.length > 0
+        }
+    },
     methods: {
         googleOAuth() {
             window.location.href = "http://localhost:8000/auth/google/login"
         },
         loginHandler() {
+            // throw error if password or username is blank
             fetch("http://localhost:8000/auth/login",  {
                 method: 'POST', // *GET, POST, PUT, DELETE, etc.
                 body: JSON.stringify({email: this.email, password: this.password})

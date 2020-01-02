@@ -23,12 +23,12 @@ func main() {
 
 	db.InitDB()
 	util.JWTInit()
-	// defer db.Close()
 
 	log.Printf("Starting HTTP Server. Listening at %q", server.Addr)
 	if err := server.ListenAndServe(); err != http.ErrServerClosed {
 		log.Printf("%v", err)
 	} else {
 		log.Println("Server closed!")
+		// defer db.Close()
 	}
 }

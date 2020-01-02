@@ -98,7 +98,6 @@ func userRegister(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	fmt.Println(s)
 	// Empty data checking
 	emailCheck := util.IsEmpty(s.Email)
 	pwdCheck := util.IsEmpty(s.Password)

@@ -27,7 +27,7 @@
                                     Github
                                 </base-button>
 
-                                <base-button type="neutral">
+                                <base-button type="neutral" v-on:click="googleOAuth">
                                     <img slot="icon" src="img/icons/common/google.svg">
                                     Google
                                 </base-button>
@@ -98,6 +98,9 @@ export default {
         console.log(this.$route.query.access_token)
     },
     methods: {
+        googleOAuth() {
+            window.location.href = "http://localhost:8000/auth/google/login"
+        },
         registerHandler() {
             fetch("http://localhost:8000/auth/register",  {
                 method: 'POST', // *GET, POST, PUT, DELETE, etc.
