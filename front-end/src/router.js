@@ -19,7 +19,7 @@ export default new Router({
   linkExactActiveClass: "active",
   routes: [
     {
-      path: "/",
+      path: "/componentsRef",
       name: "components",
       components: {
         header: AppHeader,
@@ -52,6 +52,15 @@ export default new Router({
         header: AppHeader,
         default: RefRegister,
         footer: AppFooter
+      }
+    },
+    {
+      path: "/",
+      name: "root",
+      components: {
+        header: CustomHeader,
+        default: Components,
+        footer: CustomFooter
       }
     },
     {

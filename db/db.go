@@ -39,6 +39,10 @@ func CreateUser(username string, password string) error {
 	return nil
 }
 
+// func GetAllUsers() ([]util.User, error) {
+// 	return nil, nil
+// }
+
 // TODO HASH Password
 func GetUser(username string) (util.User, error) {
 	storedCreds := util.User{}
