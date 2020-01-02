@@ -1,4 +1,4 @@
-package main
+package test
 // seed db
 import (
 	"database/sql"
