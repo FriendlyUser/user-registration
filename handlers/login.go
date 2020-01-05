@@ -111,9 +111,9 @@ func userRegister(w http.ResponseWriter, r *http.Request) {
 	err = db.CreateUser(s.Email, s.Password)
 	if err != nil {
 		// if user exists already send an error
-		// http.Error(w, err.Error(), 500)
 		badReq(w, true, err.Error())
 		// return
 	}
-	fmt.Fprintf(w, `{"email":%q,"password":%q}`, s.Email, s.Password)
+	jwtToken := util.CreateJWT(s.Email)
+	fmt.Fprintf(w, `{"email":%q,"password":%q, "token":%q}`, s.Email, s.Password, jwtToken)
 }

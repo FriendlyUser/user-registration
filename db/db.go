@@ -39,10 +39,6 @@ func CreateUser(username string, password string) error {
 	return nil
 }
 
-// func GetAllUsers() ([]util.User, error) {
-// 	return nil, nil
-// }
-
 // TODO HASH Password
 func GetUser(username string) (util.User, error) {
 	storedCreds := util.User{}
@@ -71,3 +67,37 @@ func CreateOrGetUser(username string) (util.User, error) {
 	}
 	return User, err
 }
+
+func UpdateUser(username string, description string, phone string, job_title string) (int64, error){
+	results, err := db.Exec("update users set description=($2),phone=($3),job_title=($4) where username=($1)",
+		username, description, phone, job_title)
+	rowsImpacted, err := results.RowsAffected()
+	if err != nil {
+		fmt.Println(err)
+	}
+	return rowsImpacted,err
+}
+
+func GetAllUsers() ([]util.User, error) {
+	rows, err := db.Query("select * from users")
+	if err != nil {
+		fmt.Println(err)
+	}
+	defer rows.Close()
+	AllUsers := []util.User{}
+	for rows.Next() {
+		user := util.User{}
+		err := rows.Scan(&user.Email, &user.Password, &user.Description, &user.Phone, &user.JobTitle)
+		AllUsers = append(AllUsers,user)
+		if err != nil {
+			fmt.Println(err)
+		}
+		fmt.Println(user)
+	}
+	err = rows.Err()
+	if err != nil {
+		fmt.Println(err)
+	}
+	return AllUsers, err
+}
+

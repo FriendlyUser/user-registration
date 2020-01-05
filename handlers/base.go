@@ -19,8 +19,10 @@ func New() http.Handler {
 	mux.HandleFunc("/auth/login", userLogin)
 	mux.HandleFunc("/auth/register", userRegister)
 
+	// Get all users
+	mux.HandleFunc("/users", GetAllUsers)
+	// mux.HandleFunc("/getUser", GetUsers)
 	// test JWT token
-
 	mux.HandleFunc("/jwt/test", tokenParse)
 	return mux
 }
