@@ -6,10 +6,12 @@ go:
 install:
   - go get ./...
   - cd front-end && npm install
-  - echo VUE_APP_API_URL=https://user-demo-go-vue.herokuapp.com>>.env
-  - cat .env
+  - echo VUE_APP_API_URL=https://user-demo-go-vue.herokuapp.com >> .env
+  - cat .env || true
+  - cp .env ../ || true
 script:
   - npm run build
+  - cp .env dist || true
   - rm -rf node_modules
   - cd ../
   - cp -r front-end/dist . && ls
