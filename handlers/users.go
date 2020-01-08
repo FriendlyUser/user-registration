@@ -31,5 +31,6 @@ func GetAllUsers(w http.ResponseWriter, r *http.Request) {
 		badReq(w, true, err.Error())
 		return
 	}
+	w.Header().Set("Content-Type", "application/json")
 	fmt.Fprintf(w,string(b))
 }

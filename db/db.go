@@ -79,7 +79,11 @@ func UpdateUser(username string, description string, phone string, job_title str
 }
 
 func GetAllUsers() ([]util.User, error) {
-	rows, err := db.Query("select * from users")
+	rows, err := db.Query(`select username, 
+		COALESCE(description, 'BLANK'),
+		COALESCE(phone, 'BLANK'),
+		COALESCE(job_title, 'BLANK') 
+	from users`)
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -87,12 +91,11 @@ func GetAllUsers() ([]util.User, error) {
 	AllUsers := []util.User{}
 	for rows.Next() {
 		user := util.User{}
-		err := rows.Scan(&user.Email, &user.Password, &user.Description, &user.Phone, &user.JobTitle)
+		err := rows.Scan(&user.Email, &user.Description, &user.Phone, &user.JobTitle)
 		AllUsers = append(AllUsers,user)
 		if err != nil {
 			fmt.Println(err)
 		}
-		fmt.Println(user)
 	}
 	err = rows.Err()
 	if err != nil {

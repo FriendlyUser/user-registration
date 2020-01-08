@@ -7,7 +7,7 @@ import (
 func New() http.Handler {
 	mux := http.NewServeMux()
 
-	mux.Handle("/",  http.FileServer(http.Dir("dist/")))
+	mux.Handle("/",  http.FileServer(http.Dir("front-end/dist/")))
 	// Root
 	mux.Handle("/templates",  http.FileServer(http.Dir("templates/")))
 

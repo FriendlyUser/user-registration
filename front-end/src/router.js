@@ -13,6 +13,7 @@ import Login from "./views/Login.vue";
 import Register from "./views/Register.vue";
 import CustomHeader from "./layout/CustomAppHeader.vue";
 import CustomFooter from "./layout/CustomAppFooter.vue";
+import Users from './views/Users.vue'
 Vue.use(Router);
 
 export default new Router({
@@ -59,7 +60,7 @@ export default new Router({
       name: "root",
       components: {
         header: CustomHeader,
-        default: Components,
+        default: Users,
         footer: CustomFooter
       }
     },
