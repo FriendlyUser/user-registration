@@ -57,7 +57,7 @@ export default new Router({
     },
     {
       path: "/",
-      name: "landing",
+      name: "home",
       components: {
         header: CustomHeader,
         default: Users,
@@ -66,7 +66,7 @@ export default new Router({
     },
     {
       path: "/users",
-      name: "landing",
+      name: "home",
       components: {
         header: CustomHeader,
         default: Users,
