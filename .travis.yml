@@ -8,9 +8,9 @@ install:
   - cd front-end && npm install
 script:
   - npm run build
+  - cp dist ../dist
   - rm -rf node_modules
   - cd ../
-  - cp front-end/dist dist
 
 deploy:
   provider: heroku
