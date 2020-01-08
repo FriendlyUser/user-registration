@@ -66,7 +66,7 @@ export default new Router({
     },
     {
       path: "/userstest",
-      name: "home",
+      name: "home2",
       components: {
         header: CustomHeader,
         default: Users,

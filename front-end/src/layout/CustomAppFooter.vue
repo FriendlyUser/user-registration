@@ -6,7 +6,7 @@
                   See the Source Code on Github.
                 </div>
                 <div class="col-lg-6 text-lg-center btn-wrapper">
-                    <a target="_blank" rel="noopener" href="https://github.com/creativetimofficial"
+                    <a target="_blank" rel="noopener" href="https://github.com/FriendlyUser/user-registration"
                        class="btn btn-neutral btn-icon-only btn-github btn-round btn-lg" data-toggle="tooltip"
                        data-original-title="Star on Github">
                         <i class="fa fa-github"></i>

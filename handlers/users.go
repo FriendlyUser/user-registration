@@ -19,7 +19,7 @@ func createUser(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetAllUsers(w http.ResponseWriter, r *http.Request) {
-
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 	allUsers,err := db.GetAllUsers()
 	if err != nil {
 		// if user exists already send an error
