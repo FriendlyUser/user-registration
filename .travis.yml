@@ -10,7 +10,7 @@ script:
   - npm run build
   - rm -rf node_modules
   - cd ../
-  - cp front-end/dist .
+  - cp front-end/dist dist
 
 deploy:
   provider: heroku
