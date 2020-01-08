@@ -98,7 +98,7 @@ export default {
     },
     methods: {
         registerHandler() {
-            fetch("http://localhost:8000/auth/register",  {
+            fetch(`${process.env.VUE_APP_API}/auth/register`,  {
                 method: 'POST', // *GET, POST, PUT, DELETE, etc.
                 body: JSON.stringify({email: this.email, password: this.password})
             })

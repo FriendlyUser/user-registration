@@ -95,7 +95,7 @@ export default {
     },
     methods: {
         googleOAuth() {
-            window.location.href = "http://localhost:8000/auth/google/login"
+            window.location.href = `${process.env.VUE_APP_API}/auth/google/login`
         },
         loginHandler() {
             fetch("http://localhost:8000/auth/login",  {
