@@ -58,6 +58,7 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	}
+	fmt.Println(result_id)
 	rowsImpacted, err := result.RowsAffected()
 	if err != nil {
 		fmt.Println(err)
