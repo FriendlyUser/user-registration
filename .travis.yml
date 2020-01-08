@@ -16,7 +16,7 @@ script:
   - cp .env.production dist || true
   - rm -rf node_modules
   - cd ../
-  - cp -r front-end/dist . && ls
+  - cp -r front-end/dist
 
 deploy:
   provider: heroku
