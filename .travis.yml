@@ -6,6 +6,8 @@ go:
 install:
   - go get ./...
   - cd front-end && npm install
+  - echo VUE_APP_API_URL=https://user-demo-go-vue.herokuapp.com>>.env
+  - cat .env
 script:
   - npm run build
   - rm -rf node_modules

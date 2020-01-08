@@ -63,12 +63,7 @@ func userLogin(w http.ResponseWriter, r *http.Request) {
 	User, err = db.GetUser(s.Email)
 	dbPwd := User.Password  // DB simulation
 	dbEmail := User.Email // DB simulation
-	fmt.Printf(User.Password)
-	fmt.Printf(User.Email)
 	if s.Email == dbEmail && s.Password == dbPwd {
-			// fmt.Fprintln(w, "Login succesfull!")
-			// fmt.Printf("Login failed!")
-			// generate JWT
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusFound)
 			jwtToken := util.CreateJWT(s.Email)
@@ -79,7 +74,6 @@ func userLogin(w http.ResponseWriter, r *http.Request) {
 }
 
 func userRegister(w http.ResponseWriter, r *http.Request) {
-	fmt.Printf("Register Endpoint")
 	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	// Read body
@@ -102,7 +96,6 @@ func userRegister(w http.ResponseWriter, r *http.Request) {
 	emailCheck := util.IsEmpty(s.Email)
 	pwdCheck := util.IsEmpty(s.Password)
 	if emailCheck || pwdCheck {
-			// badReq(w, true, "no valid var")
 			fmt.Printf("ErrorCode is -10 : There is empty data.")
 			fmt.Fprintf(w, "ErrorCode is -10 : There is empty data.")
 			return
@@ -110,9 +103,7 @@ func userRegister(w http.ResponseWriter, r *http.Request) {
 	// insert to database	
 	err = db.CreateUser(s.Email, s.Password)
 	if err != nil {
-		// if user exists already send an error
 		badReq(w, true, err.Error())
-		// return
 	}
 	jwtToken := util.CreateJWT(s.Email)
 	fmt.Fprintf(w, `{"email":%q,"password":%q, "token":%q}`, s.Email, s.Password, jwtToken)

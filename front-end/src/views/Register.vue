@@ -99,10 +99,10 @@ export default {
     },
     methods: {
         googleOAuth() {
-            window.location.href = "http://localhost:8000/auth/google/login"
+            window.location.href = `${process.env.VUE_APP_API_URL}/google/login`
         },
         registerHandler() {
-            fetch("http://localhost:8000/auth/register",  {
+            fetch(`${process.env.VUE_APP_API_URL}auth/register`,  {
                 method: 'POST', // *GET, POST, PUT, DELETE, etc.
                 body: JSON.stringify({email: this.email, password: this.password})
             })

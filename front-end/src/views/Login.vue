@@ -116,11 +116,11 @@ export default {
     },
     methods: {
         googleOAuth() {
-            window.location.href = "http://localhost:8000/auth/google/login"
+            window.location.href = `${process.env.VUE_APP_API_URL}/auth/google/login`
         },
         loginHandler() {
             // throw error if password or username is blank
-            fetch("http://localhost:8000/auth/login",  {
+            fetch(`${process.env.VUE_APP_API_URL}/auth/login`,  {
                 method: 'POST', // *GET, POST, PUT, DELETE, etc.
                 body: JSON.stringify({email: this.email, password: this.password})
             })

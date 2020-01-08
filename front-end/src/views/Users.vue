@@ -133,7 +133,8 @@ export default {
         }
     },
     created() {
-        fetch(`http://localhost:8000/users`, {
+        console.log(process.env)
+        fetch(`${process.env.VUE_APP_API_URL}/users`, {
             method: 'GET'
         })
         .then(response => {
