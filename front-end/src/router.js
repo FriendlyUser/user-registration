@@ -57,7 +57,16 @@ export default new Router({
     },
     {
       path: "/",
-      name: "root",
+      name: "landing",
+      components: {
+        header: CustomHeader,
+        default: Users,
+        footer: CustomFooter
+      }
+    },
+    {
+      path: "/users",
+      name: "landing",
       components: {
         header: CustomHeader,
         default: Users,
