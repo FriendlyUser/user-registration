@@ -23,7 +23,7 @@
                         <span class="nav-link-inner--text">Features</span>
                     </a>
                     <div class="dropdown-menu-inner">
-                        <a href="https://demos.creative-tim.com/vue-argon-design-system/documentation/"
+                        <a href="https://bootstrap-vue.js.org/"
                            class="media d-flex align-items-center">
                             <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
                                 <i class="ni ni-spaceship"></i>
@@ -34,7 +34,7 @@
                                     world's most popular framework for building responsive sites.</p>
                             </div>
                         </a>
-                        <a href="https://demos.creative-tim.com/vue-argon-design-system/documentation/"
+                        <a href="https://developers.google.com/identity/protocols/OAuth2"
                            class="media d-flex align-items-center">
                             <div class="icon icon-shape bg-gradient-warning rounded-circle text-white">
                                 <i class="ni ni-ui-04"></i>
