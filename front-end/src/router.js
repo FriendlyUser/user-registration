@@ -14,7 +14,7 @@ import Register from "./views/Register.vue";
 import CustomHeader from "./layout/CustomAppHeader.vue";
 import CustomFooter from "./layout/CustomAppFooter.vue";
 import Users from './views/Users.vue'
-Vue.use(Router);
+Vue.use(Router)
 
 export default new Router({
   linkExactActiveClass: "active",
@@ -65,7 +65,7 @@ export default new Router({
       }
     },
     {
-      path: "/users",
+      path: "/userstest",
       name: "home",
       components: {
         header: CustomHeader,
