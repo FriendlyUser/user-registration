@@ -9,13 +9,13 @@ Vue.use(Router);
 export default new Router({
   routes: [
     {
-      path: "/",
-      name: "starter",
-      components: {
-        header: Header,
-        default: Starter,
-        footer: Footer
-      }
+      // path: "/",
+      // name: "starter",
+      // components: {
+      //   header: Header,
+      //   default: Starter,
+      //   footer: Footer
+      // }
     }
   ]
 });
