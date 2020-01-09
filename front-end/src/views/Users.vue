@@ -55,7 +55,7 @@
                                 <card class="border-0" hover shadow body-classes="py-5">
                                     <icon name="ni ni-check-bold" type="primary" rounded class="mb-4">
                                     </icon>
-                                    <h6 class="text-primary text-uppercase">Download Argon</h6>
+                                    <h6 class="text-primary text-uppercase">Built with Argon</h6>
                                     <p class="description mt-3">Argon is a great free UI package based on Bootstrap 4
                                         that includes the most important components and features.</p>
                                     <div>
@@ -72,9 +72,8 @@
                                 <card class="border-0" hover shadow body-classes="py-5">
                                     <icon name="ni ni-istanbul" type="success" rounded class="mb-4">
                                     </icon>
-                                    <h6 class="text-success text-uppercase">Build Something</h6>
-                                    <p class="description mt-3">Argon is a great free UI package based on Bootstrap
-                                        4 that includes the most important components and features.</p>
+                                    <h6 class="text-success text-uppercase">Extend From</h6>
+                                    <p class="description mt-3">Simple User Registration Example built on postgres, vue and golang.</p>
                                     <div>
                                         <badge type="success" rounded>business</badge>
                                         <badge type="success" rounded>vision</badge>
@@ -90,8 +89,7 @@
                                     <icon name="ni ni-planet" type="warning" rounded class="mb-4">
                                     </icon>
                                     <h6 class="text-warning text-uppercase">Prepare Launch</h6>
-                                    <p class="description mt-3">Argon is a great free UI package based on Bootstrap
-                                        4 that includes the most important components and features.</p>
+                                    <p class="description mt-3">Built on open source technolgies with components and features.</p>
                                     <div>
                                         <badge type="warning" rounded>marketing</badge>
                                         <badge type="warning" rounded>product</badge>
